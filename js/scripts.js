@@ -1,4 +1,6 @@
 
+
+let pokemonRepository = (function(){
   let pokemonList=[
       {name: `Bulbasur`, height: `0.7`, types: [`grass`, `poison`, `flying`, `electric`]},
       {name: `Jigglypuff`, height: `0.2`, types: [`steel`, `poison`]},
@@ -7,29 +9,31 @@
       {name: `Starmie`, height: `1.7`, types: [`dragon`, `ghost`, `bug`, `fire`, `ice`]}
     ];
 
-  /*   for (let i = 0; i < pokemonList.length; i++) {
-      document.write('The name of Pokemon is ' + pokemonList[i].name + ' ' + 'and height is ' + pokemonList[i].height);
+    function add (pokemon) {
+        pokemonList.push(pokemon)
+      }
+    function getAll () {
+        return pokemonList
+      }
+      return {
+        add: add,
+        getAll: getAll
+      }
 
-      if(pokemonList[i].height >= 1.7) {
+})();
+
+pokemonRepository.add({ name: 'Butterfree', height: 3, types: ['bug', 'flying']});
+console.log(pokemonRepository.getAll());
+
+  pokemonRepository.getAll().forEach(function(pokemon) {
+      document.write('The name of Pokemon is ' + pokemon.name + ' ' + 'and height is ' + pokemon.height);
+
+      if(pokemon.height >= 1.7) {
           document.write(`Wow, that\`s big!`+ `<br>`);
-      } else if(pokemonList[i].height >=0.5 && pokemonList[i].height <=1.1) {
+      } else if(pokemon.height >=0.5 && pokemon.height <=1.1) {
           document.write(`medium size. `+ `<br>`);
       } else {
           document.write(`small in size. ` + `<br>`);
       }
-    }
-    */
-
-
-      pokemonList.forEach(function(pokemon) {
-          document.write('The name of Pokemon is ' + pokemon.name + ' ' + 'and height is ' + pokemon.height);
-
-          if(pokemon.height >= 1.7) {
-              document.write(`Wow, that\`s big!`+ `<br>`);
-          } else if(pokemon.height >=0.5 && pokemon.height <=1.1) {
-              document.write(`medium size. `+ `<br>`);
-          } else {
-              document.write(`small in size. ` + `<br>`);
-          }
-
-        });
+    });
+  };
