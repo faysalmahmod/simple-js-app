@@ -26,14 +26,27 @@ pokemonRepository.add({ name: 'Butterfree', height: 3, types: ['bug', 'flying']}
 console.log(pokemonRepository.getAll());
 
   pokemonRepository.getAll().forEach(function(pokemon) {
-      document.write('The name of Pokemon is ' + pokemon.name + ' ' + 'and height is ' + pokemon.height);
-
-      if(pokemon.height >= 1.7) {
-          document.write(`Wow, that\`s big!`+ `<br>`);
-      } else if(pokemon.height >=0.5 && pokemon.height <=1.1) {
-          document.write(`medium size. `+ `<br>`);
-      } else {
-          document.write(`small in size. ` + `<br>`);
-      }
+    
+      let ulList=document.querySelector('.pokemon-list');
+      let listItem = document.createElement('li');
+      let button = document.createElement('button');
+      button.innertext=pokemon.name;
+      button.classList.add('btn-pokemon');
+      listItem.appendchild('button');
+      ulList.appendchild('listItem');
+      eventListener(button, pokemon);
     });
-  };
+
+
+
+
+    // document.write('The name of Pokemon is ' + pokemon.name + ' ' + 'and height is ' + pokemon.height);
+    //
+    // if(pokemon.height >= 1.7) {
+    //     document.write(' '+ `Wow, that\`s big!`+ `<br>`);
+    // } else if(pokemon.height >=0.5 && pokemon.height <=1.1) {
+    //     document.write(' '+ `medium size. `+ `<br>`);
+    // } else {
+    //     document.write(' '+ `small in size. ` + `<br>`);
+    // }
+    // });
