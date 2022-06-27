@@ -6,7 +6,6 @@
 let pokemonRepository = (function(){
     let pokemonList = [];
     let apiUrl ="https://pokeapi.co/api/v2/pokemon/?limit=20";
-    let modalContainer = document.querySelector('#modal-container');
 
 // The loadList function holds the promise.
 // The then function holds the (result =) json parameter holds a conditional forEach and calls
@@ -53,11 +52,17 @@ let pokemonRepository = (function(){
 // After the connection (via class name) is implemented new elements were created.
 // A new class name was added to the <ol> list (Question: for what?)
     function addListItem(pokemon){
-        let pokemonList = document.querySelector(".pokemon-list"); // this is a class in HTML
+        let pokemonList = document.querySelector(".list-group"); // this is a class in HTML
         let listItem = document.createElement("li");
         let button = document.createElement("button");
+        listItem.classList.add('group-list-item');
         button.innerText = pokemon.name;
-        button.classList.add("btn-pokemon"); // this is a class in CSS
+        button.classList.add('btn-pokemon');   // this is a class in CSS
+        // Bootsrap classes added to butoon and linked with modal
+        button.classList.add("btn", "col-xl-6","col-md-8","col-11","mx-auto");
+        button.classList.add('list-group-item', 'list-group-item-action');
+        button.setAttribute('data-target', '#poke-modal');
+        button.setAttribute('data-toggle', 'modal');
         listItem.appendChild(button);
         pokemonList.appendChild(listItem);
         eventListener(button, pokemon);
@@ -82,7 +87,7 @@ let pokemonRepository = (function(){
 
     //This function expect a parameter with a Pokémon object as a parameter.
     // loadDetails() GET the Pokémon details using the URL from the Pokémon object in the parameter.
-        function loadDetails(item) {
+      function loadDetails(item) {
             let url = item.detailsUrl; // --> this is the bridge to the API link which holds the individual character of the pokemon
             return fetch(url).then(function (response) {
               return response.json();
@@ -97,67 +102,32 @@ let pokemonRepository = (function(){
           }
           //modal
 
-              function showModal(pokemon){
-                 modalContainer.innerHTML = '';
-                 let modal=document.createElement('div');
-                 modal.classList.add('modal');
-          //button to close modal
-                 let closeButton=document.createElement('button');
-                 closeButton.innerText='Close';
-                 closeButton.classList.add('modal-close');
-                 closeButton.addEventListener('click',hideModal);
-          //Heading ot title of Modal
-                 let titleElement=document.createElement('h1');
-                 titleElement.innerText='Name of Pokemon is '+ pokemon.name;
-          //Content in modal
-                  let contentElement=document.createElement('p');
-                  contentElement.innerText='Height of Pokemon is '+pokemon.height;
-         //Image of pokemon
-                  let imgElement = document.createElement('img');
-		              imgElement.src = pokemon.imageUrl;
-		              imgElement.classList.add('pokemon-front-image');
-		              imgElement.setAttribute('alt', 'image of ' + pokemon.name);
+        function showModal(pokemon){
+              let modalBody = document.querySelector('#poke-modal-body');
+              let modalTitle = document.querySelector('#poke-modal-title');
 
-          //All elements appended into Modal div
-                  modal.appendChild(closeButton);
-                  modal.appendChild(imgElement);
+              // Clear any existing modal content
+              modalTitle.innerHTML = '';
+              modalBody.innerHTML = '';
 
-                  modal.appendChild(titleElement);
-                  modal.appendChild(contentElement);
-          //Modal Div appended into modalContainer
-                  modalContainer.appendChild(modal);
-
-                  modalContainer.classList.add('is-visible');
-              }
+              let pokemonName = document.createElement('h1');
+              pokemonName.innerText = pokemon.name;
 
 
-          // This function represents to hide the modal after clicking on x, space or using the key ESC
-           // Now the three options need to be wired up
-              function hideModal() {
-                modalContainer.classList.remove('is-visible');
-              }
+              let pokemonSprite = document.createElement('img');
+              pokemonSprite.src = pokemon.imageUrl;
+              pokemonSprite.classList.add('pokemon-sprite');
 
-          // The Close button function is added to the showDetails using the hideModal variable
-          // The Esc scenario is shown in the function right abobe the return statement of the IIFE
+              let pokemonHeight = document.createElement('p');
+              pokemonHeight.innerText = 'Height of ' + pokemon.name +' is ' + pokemon.height;
+              pokemonHeight.classList.add('pokemon-Height');
 
 
-          // Clicking outside the modal to close it belongs to the function below
-              modalContainer.addEventListener("click", (e) => {
-                  // Since this is also triggered when clicking inside the modal
-                  // we only want to close if the user clicks directly on the overlay
-                  let target = e.target;
-                  if(target === modalContainer) {
-                      hideModal();
-                  }
-                  });
-              // Function to close the modal via the Esc keyboard key
-                window.addEventListener("keydown", (e) => {
-                    if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
-                        hideModal();
-                    }
-                });
+              modalTitle.appendChild(pokemonName);
+              modalBody.appendChild(pokemonSprite);
+              modalBody.appendChild(pokemonHeight);
 
-          // call & add event listener
+          }
 
 
 
