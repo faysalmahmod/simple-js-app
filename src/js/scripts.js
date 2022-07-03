@@ -87,7 +87,7 @@ let pokemonRepository = (function(){
 
     //This function expect a parameter with a Pokémon object as a parameter.
     // loadDetails() GET the Pokémon details using the URL from the Pokémon object in the parameter.
-      function loadDetails(item) {
+        function loadDetails(item) {
             let url = item.detailsUrl; // --> this is the bridge to the API link which holds the individual character of the pokemon
             return fetch(url).then(function (response) {
               return response.json();
@@ -100,6 +100,13 @@ let pokemonRepository = (function(){
               console.error(e);
             });
           }
+        
+        function findPokemonByName(name) {
+            let result = getAll().filter((pokemon) => pokemon.name === name);
+            // filter returns an array, so we need to get the pokemon by index
+            return result[0];
+          }
+
           //modal
 
         function showModal(pokemon){
