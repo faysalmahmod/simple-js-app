@@ -13,36 +13,23 @@
     />
 
     <link ref="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="dist/css/styles.css">
     <title>Pokedex</title>
   </head>
   <body>
 
-<!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <a class="navbar-brand"> Pokédex </a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Home</a>
-              </li>
-            </ul>
-
-          </div>
+        <nav class="navbar navbar-light bg-dark">
+          <a class="navbar-brand" href=""><img class="logo img-fluid" src="img/pkmn_logo.png" width="85" height="85" alt="pokemon-logo"></a>
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+          </form>
         </nav>
-
-
+        
+        
+        <h4 class="text-center">-Pokédex-</h4>
+ 
+        
         <!-- Pokemon Modal -->
         <div class="modal fade" id="poke-modal" tabindex="-1" role="dialog">
           <div class="modal-dialog" role="document">
@@ -76,7 +63,7 @@
 
 
 
-    <ul class='list-group'></ul>
+    <ul class='list-group pokemon-list row mt-9 pl-6'></ul>
 
 
     <!-- Bootstrap -->
@@ -99,7 +86,7 @@
 
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch.umd.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="src/js/scripts.js"></script>
     <script src="js/tota11y.min.js"> </script>
   </body>
 </html>
