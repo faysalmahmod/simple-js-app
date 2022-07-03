@@ -5,8 +5,10 @@
 // The API link will later be use as a promise in the function loadList by using the function fetch.
 let pokemonRepository = (function(){
     let pokemonList = [];
-    let apiUrl ="https://pokeapi.co/api/v2/pokemon/?limit=20";
+    let apiUrl ="https://pokeapi.co/api/v2/pokemon/?limit=25";
 
+    let input = $("input"); //Getting input field
+    input.on("input", filterList);//Triggering filterlist function created below
 // The loadList function holds the promise.
 // The then function holds the (result =) json parameter holds a conditional forEach and calls
 // The catch function shows the error in any case and a call
@@ -59,7 +61,7 @@ let pokemonRepository = (function(){
         button.innerText = pokemon.name;
         button.classList.add('btn-pokemon');   // this is a class in CSS
         // Bootsrap classes added to butoon and linked with modal
-        button.classList.add("btn", "col-xl-6","col-md-8","col-11","mx-auto");
+        button.classList.add("btn", "col-xl-3","col-md-6","col-11","mx-auto");
         button.classList.add('list-group-item', 'list-group-item-action');
         button.setAttribute('data-target', '#poke-modal');
         button.setAttribute('data-toggle', 'modal');
@@ -84,6 +86,23 @@ let pokemonRepository = (function(){
       });
 
     }
+//Function which is used to filter results of Pokemon according to search
+    function filterList() {
+        let inputValue = $("input").val();
+        let list = $("li");
+        list.each(function() {
+          let item = $(this);
+          let name = item.text();
+          if (name.startsWith(inputValue)) {
+            item.show();
+          } else {
+            item.hide();
+          }
+        });
+      }
+
+
+
 
     //This function expect a parameter with a Pokémon object as a parameter.
     // loadDetails() GET the Pokémon details using the URL from the Pokémon object in the parameter.
@@ -119,15 +138,18 @@ let pokemonRepository = (function(){
 
               let pokemonName = document.createElement('h1');
               pokemonName.innerText = pokemon.name;
-
+              pokemonName.classList.add('text-uppercase');
 
               let pokemonSprite = document.createElement('img');
               pokemonSprite.src = pokemon.imageUrl;
               pokemonSprite.classList.add('pokemon-sprite');
+              pokemonSprite.classList.add('mx-auto');
+              pokemonSprite.classList.add('d-block');
 
               let pokemonHeight = document.createElement('p');
               pokemonHeight.innerText = 'Height of ' + pokemon.name +' is ' + pokemon.height;
               pokemonHeight.classList.add('pokemon-Height');
+              pokemonHeight.classList.add('text-center');
 
 
               modalTitle.appendChild(pokemonName);
