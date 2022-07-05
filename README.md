@@ -1,7 +1,7 @@
 Simple POKEDEX JS App
 Introduction
 
-This is a simple Pokedex app.It shows an list of 150 Pokemons loaded from external public API : Pokemon API.
+This is a simple Pokedex app.It shows an list of Pokemons loaded from external public API which is Pokemon API.
 
 
 
