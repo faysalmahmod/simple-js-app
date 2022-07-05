@@ -11,6 +11,25 @@
   1. Button pokemon
   =====================================
   */
+.nav_bar
+{
+   border-bottom: 3px solid #EE82CF;
+   border-style: groove;
+   border-right: 3px solid #EE82CF;
+   border-top: none;
+   border-left: none;
+}
+
+#search
+{
+  border : 1px solid #EE82CF;
+  border-style: groove;
+}
+.btn_search
+{
+  border : 1px solid #EE82CF;
+  border-style: groove;
+}
 
 .btn-pokemon{
   font-family: 'Helvetica', 'Arial', sans-serif;
@@ -31,8 +50,12 @@
   position: relative;
   box-shadow: 0 2px 25px rgba(255, 0, 130, 0.5);
 }
-
-
+/* Pokemon List */
+.pokemon-list {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+  }
 
 /* Portrait */
 @media only screen

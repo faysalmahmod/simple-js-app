@@ -5,7 +5,7 @@
 // The API link will later be use as a promise in the function loadList by using the function fetch.
 let pokemonRepository = (function(){
     let pokemonList = [];
-    let apiUrl ="https://pokeapi.co/api/v2/pokemon/?limit=25";
+    let apiUrl ="https://pokeapi.co/api/v2/pokemon/?limit=40";
 
     let input = $("input"); //Getting input field
     input.on("input", filterList);//Triggering filterlist function created below
@@ -54,14 +54,14 @@ let pokemonRepository = (function(){
 // After the connection (via class name) is implemented new elements were created.
 // A new class name was added to the <ol> list (Question: for what?)
     function addListItem(pokemon){
-        let pokemonList = document.querySelector(".list-group"); // this is a class in HTML
+        let pokemonList = document.querySelector(".pokemon-list"); // this is a class in HTML
         let listItem = document.createElement("li");
         let button = document.createElement("button");
-        listItem.classList.add('group-list-item');
+        listItem.classList.add("col-sm-6", "col-md-4", "col-lg-4");
         button.innerText = pokemon.name;
         button.classList.add('btn-pokemon');   // this is a class in CSS
         // Bootsrap classes added to butoon and linked with modal
-        button.classList.add("btn", "col-xl-3","col-md-6","col-11","mx-auto");
+        button.classList.add("btn", "col-lg-5","col-md-7","col-11","mx-auto");
         button.classList.add('list-group-item', 'list-group-item-action');
         button.setAttribute('data-target', '#poke-modal');
         button.setAttribute('data-toggle', 'modal');

@@ -13,13 +13,13 @@
     />
 
     <link ref="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="dist/css/styles.css">
+    <link rel="stylesheet" href="src/css/styles.css">
     <title>Pokedex</title>
   </head>
   <body>
 
 
-        <nav class="navbar navbar-light bg-dark">
+        <nav class="nav_bar navbar navbar-light bg-dark sticky-top">
           <a class="navbar-brand" href=""><img class="logo img-fluid" src="img/pkmn_logo.png" width="85" height="85" alt="pokemon-logo"></a>
           <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" id="search" placeholder="Search" aria-label="Search">
@@ -64,7 +64,7 @@
 
 
 
-    <ul class='list-group pokemon-list row mt-9 pl-6'></ul>
+    <ul class='pokemon-list row mt-4 pl-1'></ul>
 
 
     <!-- Bootstrap -->
@@ -87,7 +87,7 @@
 
     <script src="js/promise-polyfill.js"></script>
     <script src="js/fetch.umd.js"></script>
-    <script src="dist/js/scripts.js"></script>
+    <script src="src/js/scripts.js"></script>
     <script src="js/tota11y.min.js"> </script>
   </body>
 </html>
